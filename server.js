@@ -3,8 +3,10 @@ var express = require('express');
 const DialogflowApp = require('actions-on-google').DialogflowApp; // Google Assistant helper library
 const genre = new Map();
 var app = express();
+var bodyParser = require('body-parser');
 
 // app.use(express.static(__dirname + '/assets'));
+app.use(bodyParser.json({ type: 'application/*+json' }));
 
 //app.get('/', function(req, res) {
 //    res.status(200).send("welcome to the server, things are working well");
