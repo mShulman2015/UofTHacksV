@@ -15,7 +15,7 @@ genre.set('genre', movieAdvisor => movieAdvisor.tell(`Your lucky number is ${mov
 app.post('/', function(req, res) {
   console.log('Dialogflow Request headers: ' + JSON.stringify(req.headers));
   console.log('Dialogflow Request body: ' + JSON.stringify(req.body));
-  const movieAdvisor = new DialogflowApp({req,res});
+  const movieAdvisor = new DialogflowApp({Request: req, Response: res});
   movieAdvisor.handleRequest(genre);
 });
 
