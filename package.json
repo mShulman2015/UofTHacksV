@@ -1,3 +1,11 @@
 {
-  "version": "1.0.0"
+  "name": "moive-advisor",
+  "version": "1.0.0",
+  "description": "google home app to help get movies",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.14.0",
+    "fs": "0.0.1-security",
+    "https": "1.0.0" 
+  }
 }
