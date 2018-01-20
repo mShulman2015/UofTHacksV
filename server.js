@@ -1,27 +1,81 @@
 'use strict';
-var express = require('express');
+
+const functions = require('firebase-functions'); // Cloud Functions for Firebase library
 const DialogflowApp = require('actions-on-google').DialogflowApp; // Google Assistant helper library
-const genre = new Map();
-var app = express();
+const actionMap = new Map();
+//instead of 
+actionMap.set('genre', app => app.tell(`Your genre is ${app.getArgument('Genre')}`));
 
-// app.use(express.static(__dirname + '/assets'));
-
-app.get('/', function(req, res) {
-    res.status(200).send("welcome to the server, things are working well");
+exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, response) => {
+  console.log('Dialogflow Request headers: ' + JSON.stringify(request.headers));
+  console.log('Dialogflow Request body: ' + JSON.stringify(request.body));
+  const app = new DialogflowApp({request,response});
+  console.log(app.getArgument('Genre'));
+  getMovie({'genere': app.getArgument('Genre')}, function(result) {
+    // console.log(result);
+    app.handleRequest(actionMap);
+  });
 });
 
-genre.set('genre', movieAdvisor => movieAdvisor.tell(`Your lucky number is ${movieAdvisor.getArgument('Genre')}`));
+var http = require("https");
 
-app.post('/', function(req, res) {
-  console.log('Dialogflow Request headers: ' + JSON.stringify(req.headers));
-  console.log('Dialogflow Request body: ' + JSON.stringify(req.body));
-  const movieAdvisor = new DialogflowApp({req,res});
-  movieAdvisor.handleRequest(genre);
-});
+var apiKey = '65e3afbf8707bae113c071382a40d33c';
+var generes = {
+    'action': 28,
+    'adventure': 12,
+    'animation': 16,
+    'comedy': 35,
+    'crime': 80,
+    'documentary': 99,
+    'drama': 18,
+    'family': 10751,
+    'fantasy': 14,
+    'history': 36,
+    'horror': 27,
+    'music': 10402,
+    'mystery': 9648,
+    'romance': 10749,
+    'science fiction': 878,
+    'tv movie': 10770,
+    'thriller': 53,
+    'war': 10752,
+    'western': 37
+}
 
-app.get('*', function(req, res) {
-    res.status(404).send("hi, sorry didn't find what you where looking for");
-}); //404 error
+function getMovie(options, callback) {
+    var queryString = '?api_key=' + apiKey;
+    if(options !== null && 'genere' in options && options['genere'].toLowerCase() in generes) {
+        queryString += '&with_genres=' + generes[options['genere']];
+    }
+    queryString += '&include_video=false';
+    queryString += '&include_adult=false';
+    queryString += '&page=1';
+    queryString += '&sort_by=popularity.desc';
+    queryString += '&language=en-US';
+    
+    var request_options = {
+        "method": "GET",
+        "hostname": "api.themoviedb.org",
+        "port": null,
+        "path": "/3/discover/movie" + queryString,
+        "headers": {}
+    };
 
-app.listen(process.env.PORT || 8080);
-console.log('Listening on port ' + (process.env.PORT || 8080));
+    var req = http.request(request_options, function (res) {
+        var chunks = [];
+
+        res.on("data", function (chunk) {
+            chunks.push(chunk);
+        });
+
+        res.on("end", function () {
+            var body = Buffer.concat(chunks);
+            // var jsonBody = JSON.parse(body.toString());
+            // callback(jsonBody.results[0].title);
+            callback('hi')
+        });
+    });
+
+    req.write("{}");
+    req.end();
+}

@@ -1,12 +1,18 @@
 {
-  "name": "moive-advisor",
-  "version": "1.0.0",
-  "description": "google home app to help get movies",
-  "main": "server.js",
+  "name": "dialogflowFirebaseFulfillment",
+  "description": "This is the default fulfillment for a Dialogflow agents using Cloud Functions for Firebase",
+  "version": "0.0.1",
+  "private": true,
+  "license": "Apache Version 2.0",
+  "author": "Google Inc.",
+  "engines": {
+    "node": "~6.0"
+  },
   "dependencies": {
-    "actions-on-google": "^1.7.0",
-    "express": "^4.14.0",
-    "fs": "0.0.1-security",
+    "actions-on-google": "^1.5.x",
+    "firebase-admin": "^4.2.1",
+    "firebase-functions": "^0.5.7",
+    "apiai": "^4.0.3",
     "https": "1.0.0"
   }
 }
