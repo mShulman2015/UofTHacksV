@@ -7,6 +7,9 @@ var bodyParser = require('body-parser');
 
 // app.use(express.static(__dirname + '/assets'));
 app.use(bodyParser.json({ type: 'application/*+json' }));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 app.get('/', function(req, res) {
     res.status(200).send("welcome to the server, things are working well");
