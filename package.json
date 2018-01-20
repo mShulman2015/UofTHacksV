@@ -4,8 +4,9 @@
   "description": "google home app to help get movies",
   "main": "server.js",
   "dependencies": {
+    "actions-on-google": "^1.7.0",
     "express": "^4.14.0",
     "fs": "0.0.1-security",
-    "https": "1.0.0" 
+    "https": "1.0.0"
   }
 }
