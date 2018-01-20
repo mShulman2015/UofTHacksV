@@ -1,6 +1,5 @@
 'use strict';
 var express = require('express');
-var bodyParser = require('body-parser');
 const DialogflowApp = require('actions-on-google').DialogflowApp; // Google Assistant helper library
 const genre = new Map();
 var app = express();
