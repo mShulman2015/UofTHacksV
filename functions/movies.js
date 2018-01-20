@@ -23,7 +23,7 @@ var generes = {
     'western': 37
 }
 
-function getMovie(options, callback) {
+exports.getMovie = function(options, callback) {
     queryString = '?api_key=' + apiKey;
     if(options != null && 'genere' in options && options['genere'].toLowerCase() in generes) {
         queryString += '&with_genres=' + generes[options['genere']];
@@ -59,7 +59,3 @@ function getMovie(options, callback) {
     req.write("{}");
     req.end();
 }
-
-getMovie({'genere': 'comedy'}, function(result) {
-    console.log(result);
-});
