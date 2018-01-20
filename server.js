@@ -18,6 +18,12 @@ app.post('/', function(req, res) {
   genre.handleRequest(genre);
 });
 
+app.post('/genre', function(req, res) {
+    console.log('my thing');
+    console.log(JSON.stringify(req.headers));
+    console.log(JSON.stringify(req.body));
+})
+
 app.get('*', function(req, res) {
     res.status(404).send("hi, sorry didn't find what you where looking for");
 }); //404 error
