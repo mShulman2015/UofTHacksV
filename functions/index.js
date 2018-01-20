@@ -12,9 +12,9 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   console.log('Dialogflow Request body: ' + JSON.stringify(request.body));
   const app = new DialogflowApp({request,response});
   console.log(app.getArgument('Genre'));
-  movies.getMovie({'genere': app.getArgument('Genre').toLowerCase()}, function(result) {
+  movies.getMovie({'genre': app.getArgument('Genre').toLowerCase()}, function(result) {
     console.log('my result is: ' + result);
-    app.tell(`Your genre is ${app.getArgument('Genre')}, ` + result);
+    app.tell(`Within the ${app.getArgument('Genre')} genre, you can watch , ` + result);
     // app.handleRequest(actionMap, result);
   });
   // app.handleRequest(actionMap);
