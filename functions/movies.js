@@ -1,7 +1,7 @@
 var http = require("https");
 
 var apiKey = '65e3afbf8707bae113c071382a40d33c';
-var generes = {
+var genre = {
     'action': 28,
     'adventure': 12,
     'animation': 16,
@@ -25,8 +25,8 @@ var generes = {
 
 exports.getMovie = function(options, callback) {
     queryString = '?api_key=' + apiKey;
-    if(options != null && 'genere' in options && options['genere'].toLowerCase() in generes) {
-        queryString += '&with_genres=' + generes[options['genere']];
+    if(options != null && 'genre' in options && options['genre'].toLowerCase() in genre) {
+        queryString += '&with_genres=' + genre[options['genre']];
     }
     queryString += '&include_video=false';
     queryString += '&include_adult=false';
