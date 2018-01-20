@@ -11,6 +11,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   console.log('Dialogflow Request headers: ' + JSON.stringify(request.headers));
   console.log('Dialogflow Request body: ' + JSON.stringify(request.body));
   const app = new DialogflowApp({request,response});
+  console.log(request.body);
   console.log(app.getArgument('Genre'));
   movies.getMovie({'genre': app.getArgument('Genre').toLowerCase()}, function(result) {
     console.log('my result is: ' + result);
