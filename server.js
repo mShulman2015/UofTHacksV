@@ -7,6 +7,10 @@ var app = express();
 // app.use(express.static(__dirname + '/assets'));
 
 app.get('/', function(req, res) {
+    res.status(200).send("welcome to the server, things are working well");
+});
+
+app.post('/', function(req, res) {
   genre.set('lucky.number', movieAdvisor => movieAdvisor.tell(`Your lucky number is ${movieAdvisor.getArgument('color')}`));
   console.log('Dialogflow Request headers: ' + JSON.stringify(req.headers));
   console.log('Dialogflow Request body: ' + JSON.stringify(req.body));
