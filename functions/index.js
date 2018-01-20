@@ -5,7 +5,7 @@ const DialogflowApp = require('actions-on-google').DialogflowApp; // Google Assi
 const actionMap = new Map();
 const movies = require('./movies.js')
 //instead of
-actionMap.set('genre', app, result => app.tell(`Your genre is ${result}`));
+actionMap.set('genre', app => app.tell(`Your genre is ${app.getArgument('Genre')}, ` + result));
 
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, response) => {
   console.log('Dialogflow Request headers: ' + JSON.stringify(request.headers));
@@ -14,7 +14,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   console.log(app.getArgument('Genre'));
   getMovie({'genere': app.getArgument('Genre')}, function(result) {
     console.log(result);
-    app.handleRequest(actionMap, result);
+    app.handleRequest(actionMap);
   });
   // app.handleRequest(actionMap);
 });
