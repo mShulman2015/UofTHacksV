@@ -8,7 +8,7 @@ var app = express();
 // app.use(express.static(__dirname + '/assets'));
 
 app.get('/', function(req, res) {
-  genre.set('lucky.number', movieAdvisor => movieAdvisor.tell(`Your lucky number is ${app.getArgument('color')}`));
+  genre.set('lucky.number', movieAdvisor => movieAdvisor.tell(`Your lucky number is ${movieAdvisor.getArgument('color')}`));
   console.log('Dialogflow Request headers: ' + JSON.stringify(req.headers));
   console.log('Dialogflow Request body: ' + JSON.stringify(req.body));
   const movieAdvisor = new DialogflowApp({req,res});
