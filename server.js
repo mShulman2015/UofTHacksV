@@ -9,13 +9,10 @@ var app = express();
 
 app.get('/', function(req, res) {
   genre.set('lucky.number', movieAdvisor => movieAdvisor.tell(`Your lucky number is ${app.getArgument('color')}`));
-  exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, response) => {
-    console.log('Dialogflow Request headers: ' + JSON.stringify(request.headers));
-    console.log('Dialogflow Request body: ' + JSON.stringify(request.body));
-    const movieAdvisor = new DialogflowApp({request,response});
-    app.handleRequest(genre);
-  });
-
+  console.log('Dialogflow Request headers: ' + JSON.stringify(req.headers));
+  console.log('Dialogflow Request body: ' + JSON.stringify(req.body));
+  const movieAdvisor = new DialogflowApp({req,res});
+  genre.handleRequest(genre);
 });
 
 app.get('*', function(req, res) {
