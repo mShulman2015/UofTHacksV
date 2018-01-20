@@ -1,0 +1,34 @@
+[
+  {
+    "id": "29df8bcb-0c5f-40bf-82d4-40a006e21d9a",
+    "data": [
+      {
+        "text": "my color is ",
+        "userDefined": false
+      },
+      {
+        "text": "blue",
+        "alias": "color",
+        "meta": "@sys.color",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1516416442
+  },
+  {
+    "id": "72403429-83c0-4524-8f85-07889ebef188",
+    "data": [
+      {
+        "text": "blue",
+        "alias": "color",
+        "meta": "@sys.color",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 1516416442
+  }
+]

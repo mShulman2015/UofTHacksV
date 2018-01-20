@@ -1,0 +1,38 @@
+{
+  "id": "4e09b4de-3850-438c-8e1c-a1706eae763b",
+  "name": "Lucky_number",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "lucky.number",
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "7fc7f436-4a43-410b-825c-0d99da944594",
+          "required": false,
+          "dataType": "@sys.color",
+          "name": "color",
+          "value": "$color",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1516416442,
+  "fallbackIntent": false,
+  "events": []
+}

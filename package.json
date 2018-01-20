@@ -1,11 +1,3 @@
 {
-    "name": "price-it",
-    "version": "1.0.0",
-    "description": "google home price it app",
-    "main": "server.js",
-    "dependencies": {
-      "express": "^4.14.0",
-      "fs": "0.0.1-security"
-    }
-  }
-  
+  "version": "1.0.0"
+}
