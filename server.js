@@ -10,7 +10,7 @@ app.get('/', function(req, res) {
     res.status(200).send("welcome to the server, things are working well");
 });
 
-genre.set('genre', movieAdvisor => movieAdvisor.tell(`Your lucky number is ${movieAdvisor.getArgument('Genre')}`));
+genre.set('genre', movieAdvisor => movieAdvisor.tell(`Your number is ${movieAdvisor.getArgument('Genre')}`));
 
 app.post('/', function(req, res) {
   console.log('Dialogflow Request headers: ' + JSON.stringify(req.headers));
