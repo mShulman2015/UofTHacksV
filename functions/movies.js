@@ -33,7 +33,7 @@ exports.getMovie = function(options, callback) {
     queryString += '&page=1';
     queryString += '&sort_by=popularity.desc';
     queryString += '&language=en-US';
-    
+
     var request_options = {
         "method": "GET",
         "hostname": "api.themoviedb.org",
@@ -52,6 +52,7 @@ exports.getMovie = function(options, callback) {
         res.on("end", function () {
             var body = Buffer.concat(chunks);
             jsonBody = JSON.parse(body.toString());
+            console.log(jsonBody)
             callback(jsonBody.results[0].title);
         });
     });
