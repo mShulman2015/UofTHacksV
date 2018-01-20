@@ -1,0 +1,345 @@
+{
+  "id": "f979d2a6-de02-469a-b22a-2d982dfc3ed3",
+  "name": "Genre",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "genre",
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "7d4216d0-ffcc-4ef6-aea9-d81f1494d608",
+          "required": false,
+          "dataType": "@Genre",
+          "name": "Genre",
+          "value": "$Genre",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "cortanaCommand": {
+    "navigateOrService": "NAVIGATE",
+    "target": ""
+  },
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "lastUpdate": 1516473008,
+  "fallbackIntent": false,
+  "events": [],
+  "userSays": [
+    {
+      "id": "015d3ba8-aa07-4bb9-94d8-b3f73b36bd70",
+      "data": [
+        {
+          "text": "Anything",
+          "alias": "Genre",
+          "meta": "@Genre",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0,
+      "isAuto": false
+    },
+    {
+      "id": "ce47a56c-8ee4-4f3d-9b65-d799a56574ca",
+      "data": [
+        {
+          "text": "I want to view a "
+        },
+        {
+          "text": "western",
+          "alias": "Genre",
+          "meta": "@Genre",
+          "userDefined": false
+        },
+        {
+          "text": " movie"
+        }
+      ],
+      "isTemplate": false,
+      "count": 1,
+      "isAuto": false
+    },
+    {
+      "id": "2b8b510d-e69a-4045-b539-67774528bb90",
+      "data": [
+        {
+          "text": "Western",
+          "alias": "Genre",
+          "meta": "@Genre",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0,
+      "isAuto": false
+    },
+    {
+      "id": "374defe6-3978-4ef2-bd7c-55c0bc6740d7",
+      "data": [
+        {
+          "text": "War",
+          "alias": "Genre",
+          "meta": "@Genre",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0,
+      "isAuto": false
+    },
+    {
+      "id": "0f0192d1-4eff-47e2-a98b-30d721d85699",
+      "data": [
+        {
+          "text": "Thriller",
+          "alias": "Genre",
+          "meta": "@Genre",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0,
+      "isAuto": false
+    },
+    {
+      "id": "42577449-3052-4a5c-b1ed-51d89b8aeabd",
+      "data": [
+        {
+          "text": "TV Movie",
+          "alias": "Genre",
+          "meta": "@Genre",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0,
+      "isAuto": false
+    },
+    {
+      "id": "00c6b6e0-8872-481f-9b69-456af26414e5",
+      "data": [
+        {
+          "text": "Science Fiction",
+          "alias": "Genre",
+          "meta": "@Genre",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0,
+      "isAuto": false
+    },
+    {
+      "id": "16af0282-e705-4979-a362-f506f8f1f703",
+      "data": [
+        {
+          "text": "Romance",
+          "alias": "Genre",
+          "meta": "@Genre",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0,
+      "isAuto": false
+    },
+    {
+      "id": "31e9e6be-6946-4af1-b3c3-cdb71f79bb2e",
+      "data": [
+        {
+          "text": "Mystery",
+          "alias": "Genre",
+          "meta": "@Genre",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0,
+      "isAuto": false
+    },
+    {
+      "id": "a92ac1d2-da1f-4604-a250-cc17e296b61a",
+      "data": [
+        {
+          "text": "Music",
+          "alias": "Genre",
+          "meta": "@Genre",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0,
+      "isAuto": false
+    },
+    {
+      "id": "0d3aca56-0565-4aa9-adff-046b1dd11ab1",
+      "data": [
+        {
+          "text": "Horror",
+          "alias": "Genre",
+          "meta": "@Genre",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0,
+      "isAuto": false
+    },
+    {
+      "id": "c52fd7ce-8480-4113-a4d4-2df004a063a6",
+      "data": [
+        {
+          "text": "History",
+          "alias": "Genre",
+          "meta": "@Genre",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0,
+      "isAuto": false
+    },
+    {
+      "id": "cd5c40fe-c447-4c51-88ab-a68c579d7df9",
+      "data": [
+        {
+          "text": "Fantasy",
+          "alias": "Genre",
+          "meta": "@Genre",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0,
+      "isAuto": false
+    },
+    {
+      "id": "b9ebea92-6939-4728-bbd5-5a539e7cca73",
+      "data": [
+        {
+          "text": "Comedy",
+          "alias": "Genre",
+          "meta": "@Genre",
+          "userDefined": false
+        }
+      ],
+      "isTemplate": false,
+      "count": 0,
+      "isAuto": false
+    },
+    {
+      "id": "0a0bf58f-a921-46f4-ba4c-c4bb68f8ddb3",
+      "data": [
+        {
+          "text": "Family",
+          "alias": "Genre",
+          "meta": "@Genre",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0,
+      "isAuto": false
+    },
+    {
+      "id": "c85a3127-be1c-453f-8082-93e9fb067580",
+      "data": [
+        {
+          "text": "Drama",
+          "alias": "Genre",
+          "meta": "@Genre",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0,
+      "isAuto": false
+    },
+    {
+      "id": "0ae31afb-aa3a-4173-8f8a-723108883c3a",
+      "data": [
+        {
+          "text": "Documentary",
+          "alias": "Genre",
+          "meta": "@Genre",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0,
+      "isAuto": false
+    },
+    {
+      "id": "33d519ec-768f-429e-893c-e671a506c1b2",
+      "data": [
+        {
+          "text": "Crime",
+          "alias": "Genre",
+          "meta": "@Genre",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0,
+      "isAuto": false
+    },
+    {
+      "id": "d89a904b-6236-4490-bd6f-51e30eb56e25",
+      "data": [
+        {
+          "text": "Animation",
+          "alias": "Genre",
+          "meta": "@Genre",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0,
+      "isAuto": false
+    },
+    {
+      "id": "a8cf7858-0e7c-4e7e-a26e-6ac6ed757030",
+      "data": [
+        {
+          "text": "Adventure",
+          "alias": "Genre",
+          "meta": "@Genre",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0,
+      "isAuto": false
+    },
+    {
+      "id": "7cc45a28-a452-4c28-878e-bb10362c2e79",
+      "data": [
+        {
+          "text": "Action",
+          "alias": "Genre",
+          "meta": "@Genre",
+          "userDefined": true
+        }
+      ],
+      "isTemplate": false,
+      "count": 0,
+      "isAuto": false
+    }
+  ],
+  "followUpIntents": [],
+  "templates": []
+}

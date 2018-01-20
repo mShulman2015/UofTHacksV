@@ -1,19 +1,23 @@
 {
-  "id": "7900f233-1b15-4825-834d-46a11aab1c77",
+  "id": "35a9b805-91fd-4b8b-b29b-05ebe6593384",
   "name": "Default Welcome Intent",
   "auto": true,
   "contexts": [],
   "responses": [
     {
       "resetContexts": false,
-      "action": "input.welcome",
+      "action": "genre.horror",
       "affectedContexts": [],
       "parameters": [],
       "messages": [
         {
           "type": 0,
-          "lang": "en",
-          "speech": "Hi! Welcome to Lucky Number at UofT Hacks!"
+          "speech": [
+            "Hiya! What genre of movie do you want to watch?",
+            "Hi! What genre of movie do you want to watch?",
+            "Howdy! What genre of movie do you want to watch?",
+            "Hiya! What genre of movie are you up for?"
+          ]
         }
       ],
       "defaultResponsePlatforms": {},
@@ -28,5 +32,20 @@
     {
       "name": "WELCOME"
     }
-  ]
+  ],
+  "userSays": [
+    {
+      "id": "646e9f2d-5d84-4e0f-aa31-17fa29f77b0e",
+      "data": [
+        {
+          "text": "Talk to movieadvisor"
+        }
+      ],
+      "isTemplate": false,
+      "count": 0,
+      "isAuto": false
+    }
+  ],
+  "followUpIntents": [],
+  "templates": []
 }
