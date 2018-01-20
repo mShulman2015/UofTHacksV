@@ -10,19 +10,14 @@ app.get('/', function(req, res) {
     res.status(200).send("welcome to the server, things are working well");
 });
 
+genre.set('genre', movieAdvisor => movieAdvisor.tell(`Your lucky number is ${movieAdvisor.getArgument('Genre')}`));
+
 app.post('/', function(req, res) {
-  genre.set('lucky.number', movieAdvisor => movieAdvisor.tell(`Your lucky number is ${movieAdvisor.getArgument('color')}`));
   console.log('Dialogflow Request headers: ' + JSON.stringify(req.headers));
   console.log('Dialogflow Request body: ' + JSON.stringify(req.body));
   const movieAdvisor = new DialogflowApp({req,res});
-  genre.handleRequest(genre);
+  movieAdvisor.handleRequest(genre);
 });
-
-app.post('/genre', function(req, res) {
-    console.log('my thing');
-    console.log(JSON.stringify(req.headers));
-    console.log(JSON.stringify(req.body));
-})
 
 app.get('*', function(req, res) {
     res.status(404).send("hi, sorry didn't find what you where looking for");
