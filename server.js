@@ -10,17 +10,18 @@ app.use(bodyParser.json({ type: 'application/*+json' }));
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+app.use(bodyParser.json({ type: 'application/*+json' }));
 
-app.get('/', function(req, res) {
-    res.status(200).send("welcome to the server, things are working well");
-});
+//app.get('/', function(req, res) {
+//    res.status(200).send("welcome to the server, things are working well");
+//});
 
 genre.set('genre', movieAdvisor => movieAdvisor.tell(`Your number is ${movieAdvisor.getArgument('Genre')}`));
 
 app.post('/', function(req, res) {
   console.log('Dialogflow Request headers: ' + JSON.stringify(req.headers));
   console.log('Dialogflow Request body: ' + JSON.stringify(req.body));
-  const movieAdvisor = new DialogflowApp({Request: req, Response: res});
+  const movieAdvisor = new DialogflowApp({request: req, response: res});
   movieAdvisor.handleRequest(genre);
 });
 
