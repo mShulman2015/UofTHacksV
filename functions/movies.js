@@ -42,6 +42,8 @@ exports.getMovie = function(options, callback) {
         "headers": {}
     };
 
+    console.log(request_options);
+
     var req = http.request(request_options, function (res) {
         var chunks = [];
 
