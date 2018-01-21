@@ -23,6 +23,7 @@ var genre = {
     'western': 37
 }
 
+
 exports.getMovie = function(options, callback) {
     queryString = '?api_key=' + apiKey;
     if(options != null && 'genres' in options) {
@@ -33,6 +34,19 @@ exports.getMovie = function(options, callback) {
                 queryString += '%2C' + genre[options['genres'][i].toLowerCase()];
         }
     }
+    if(options != null && 'genre' in options) {
+        queryString += '&with_genres=' + genre[options['genre'].toLowerCase()];
+    }
+    if(options != null && 'year' in options) {
+        queryString += '&year=' + options['year'];
+    }
+    if(options != null && 'decades' in options) {
+        queryString += '&year=' +options['decades'];
+    }
+    if(options != null && 'actor_id' in options) {
+        queryString += '&with_cast=' + options['actor_id'];
+    }
+
     queryString += '&include_video=false';
     queryString += '&include_adult=false';
     queryString += '&page=1';
