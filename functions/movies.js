@@ -25,12 +25,12 @@ var genre = {
 
 exports.getMovie = function(options, callback) {
     queryString = '?api_key=' + apiKey;
-    if(options != null && 'genre' in options) {
-        for(var i = 0; i < len(options['genre']); i++) {
+    if(options != null && 'genres' in options) {
+        for(var i = 0; i < options['genres'].length; i++) {
             if(i ==0)
-                queryString += '&with_genres=' + genre[options['genre']].toLowerCase();
+                queryString += '&with_genres=' + genre[options['genres'][0].toLowerCase()];
             else
-                queryString += '%2C' + genre[options['genre']].toLowerCase();
+                queryString += '%2C' + genre[options['genres'][i].toLowerCase()];
         }
     }
     queryString += '&include_video=false';
@@ -58,12 +58,39 @@ exports.getMovie = function(options, callback) {
 
         res.on("end", function () {
             var body = Buffer.concat(chunks);
-            jsonBody = JSON.parse(body.toString());
-            console.log(jsonBody)
+            var jsonBody = JSON.parse(body.toString());
+            console.log(jsonBody);
             callback(jsonBody.results[0].title);
         });
     });
 
     req.write("{}");
     req.end();
+}
+
+exports.getMovieByActor = function(actorName, callback) {
+    var options = {
+        "method": "GET",
+        "hostname": "api.themoviedb.org",
+        "port": null,
+        "path": "/3/search/person?include_adult=false&page=1&query=" + encodeURI(actorName) + "&language=en-US&api_key=65e3afbf8707bae113c071382a40d33c",
+        "headers": {}
+      };
+      
+      var req = http.request(options, function (res) {
+        var chunks = [];
+      
+        res.on("data", function (chunk) {
+          chunks.push(chunk);
+        });
+      
+        res.on("end", function () {
+          var body = Buffer.concat(chunks);
+          var jsonBody = body.toString();
+          getMovie({"actor_id": jsonBody.results[0].id}, callback);
+        });
+      });
+      
+      req.write("{}");
+      req.end();
 }
