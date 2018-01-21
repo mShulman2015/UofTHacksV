@@ -74,7 +74,7 @@ exports.getMovie = function(options, callback) {
             var body = Buffer.concat(chunks);
             var jsonBody = JSON.parse(body.toString());
             console.log(jsonBody);
-            callback(jsonBody.results[0].title);
+            callback(jsonBody.results[getRandomInt(jsonBody.results.length)].title);
         });
     });
 
@@ -109,4 +109,8 @@ exports.getMovieByActor = function(actorName, callback) {
 
       req.write("{}");
       req.end();
+}
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
 }
