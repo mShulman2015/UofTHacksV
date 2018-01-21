@@ -73,8 +73,13 @@ exports.getMovie = function(options,callback) {
         res.on("end", function () {
             var body = Buffer.concat(chunks);
             var jsonBody = JSON.parse(body.toString());
-            console.log(jsonBody);
-            callback(jsonBody.results[getRandomInt(jsonBody.results.length)]);
+
+            item = getRandomInt(jsonBody.results.length);
+            console.log(jsonBody.results[item]);
+            exports.overview = jsonBody.results[item].overview;
+            console.log(jsonBody.results[item].overview);
+            console.log(jsonBody.results[item].title);
+            callback(jsonBody.results[item].title);
         });
     });
 

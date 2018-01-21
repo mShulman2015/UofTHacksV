@@ -20,38 +20,37 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   if(app.getArgument('Year'))
     inputOption["year"] = app.getArgument('Year');
   if(app.getArgument('Description')){
-      movies.getMovieDescription(param,function(result) {
-      app.ask(result.title);
-    });
+     app.ask(movies.overview);
   }
   if(app.getArgument('Again')){
     if(param != ""){
       return movies.getMovieByActor(param, function(result) {
-        console.log('my result is: ' + result.title);
-        app.ask(`Have you watched ` + result.title + ' ?');
+        console.log('my actor result is: ' + result);
+        app.ask(`Have you watched ` + result + ' ?');
       });
     }
     else if (previous_input != {}){
-      movies.getMovie(inputOption,function(result) {
-        console.log('my result is: ' + result.title);
-        app.ask(`have you watched ` + result.title + ' ?');
-        previous_input = inputOption;
+      movies.getMovie(previous_input,function(result) {
+        console.log('my result is: ' + result);
+        console.log('previous input is: ' + previous_input);
+        app.ask(`have you watched ` + result + ' ?');
       });
     }
+  }
+  if(app.getArgument('Genre') || app.getArgument('Year')){
+    movies.getMovie(inputOption,function(result) {
+      console.log("triggered");
+      app.ask(`How about ` + result + ' ?');
+      previous_input = inputOption;
+    });
   }
 
 
   if(app.getArgument('Actor')) {
     return movies.getMovieByActor(app.getArgument('Actor'), function(result) {
-      console.log('my result is: ' + result.title);
-      app.ask(`How about ` + result.title + ' ?');
+      console.log('my result is: ' + result);
+      app.ask(`How about ` + result + ' ?');
       param = app.getArgument('Actor');
     });
   }
-
-  movies.getMovie(inputOption,function(result) {
-    console.log('my result is: ' + result.title);
-    app.ask(`How about ` + result.title + ' ?');
-    previous_input = inputOption;
-  });
 });
