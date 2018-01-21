@@ -12,11 +12,19 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   console.log('Dialogflow Request body: ' + JSON.stringify(request.body));
   const app = new DialogflowApp({request,response});
   console.log(request.body);
-  console.log(app.getArgument('Genre'));
-  movies.getMovie({'genre': app.getArgument('Genre')}, function(result) {
-    console.log('my result is: ' + result);
-    app.tell(`Within the ${app.getArgument('Genre')} genre, you can watch , ` + result);
-    // app.handleRequest(actionMap, result);
-  });
+  if(app.getArgument('Genre')){
+    movies.getMovie({'genre': app.getArgument('Genre')}, function(result) {
+      console.log('my result is: ' + result);
+      app.tell(`Within the ${app.getArgument('Genre')} genre, you can watch , ` + result);
+      // app.handleRequest(actionMap, result);
+    });
+  }else if(app.getArgument('year')){
+      movies.getMovie({'year': app.getArgument('Genre')}, function(result) {
+      console.log('my result is: ' + result);
+      app.tell(`A movie in ${app.getArgument('year')}you can watch is , ` + result);
+      // app.handleRequest(actionMap, result);
+    });
+  }
+
   // app.handleRequest(actionMap);
 });
