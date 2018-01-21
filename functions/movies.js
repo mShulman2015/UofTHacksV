@@ -24,7 +24,7 @@ var genre = {
 }
 
 
-exports.getMovie = function(options, callback) {
+exports.getMovie = function(options,iterator,callback) {
     queryString = '?api_key=' + apiKey;
     if(options != null && 'genres' in options) {
         for(var i = 0; i < options['genres'].length; i++) {
@@ -74,7 +74,7 @@ exports.getMovie = function(options, callback) {
             var body = Buffer.concat(chunks);
             var jsonBody = JSON.parse(body.toString());
             console.log(jsonBody);
-            callback(jsonBody.results[0].title);
+            callback(jsonBody.results[iterator].title);
         });
     });
 
@@ -82,7 +82,8 @@ exports.getMovie = function(options, callback) {
     req.end();
 }
 
-exports.getMovieByActor = function(actorName, callback) {
+exports.getMovieByActor = function(actorName,iterator,callback) {
+    console.log(iterator);
     console.log(actorName);
     var options = {
         "method": "GET",
@@ -103,7 +104,7 @@ exports.getMovieByActor = function(actorName, callback) {
           var body = Buffer.concat(chunks);
           var jsonBody = JSON.parse(body.toString());
 
-          exports.getMovie({"actor_id": jsonBody.results[0].id}, callback);
+          exports.getMovie({"actor_id": jsonBody.results[0].id},iterator ,callback);
         });
       });
 
