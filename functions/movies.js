@@ -25,8 +25,13 @@ var genre = {
 
 exports.getMovie = function(options, callback) {
     queryString = '?api_key=' + apiKey;
-    if(options != null && 'genre' in options && options['genre'].toLowerCase() in genre) {
-        queryString += '&with_genres=' + genre[options['genre']];
+    if(options != null && 'genre' in options) {
+        for(var i = 0; i < len(options['genre']); i++) {
+            if(i ==0)
+                queryString += '&with_genres=' + genre[options['genre']].toLowerCase();
+            else
+                queryString += '%2C' + genre[options['genre']].toLowerCase();
+        }
     }
     queryString += '&include_video=false';
     queryString += '&include_adult=false';
