@@ -10,21 +10,21 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 
   const app = new DialogflowApp({request,response});
 
-  inputOption = {}
+  var inputOption = {}
   if(app.getArgument('Genre'))
     inputOption["genre"] = app.getArgument('Genre');
   if(app.getArgument('Genres'))
     inputOption["genres"] = app.getArgument('Genres');
   if(app.getArgument('Year'))
     inputOption["year"] = app.getArgument('Year');
-  
+
   if(app.getArgument('Actor')) {
-    return getMovieByActor(app.getArgument('actor'), function(result) {
+    return movies.getMovieByActor(app.getArgument('Actor'), function(result) {
       console.log('my result is: ' + result);
       app.tell(`How about ` + result + ' ?');
     });
   }
-  
+
   console.log(inputOption);
   movies.getMovie(inputOption, function(result) {
     console.log('my result is: ' + result);

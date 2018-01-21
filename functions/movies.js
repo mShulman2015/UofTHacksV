@@ -83,6 +83,7 @@ exports.getMovie = function(options, callback) {
 }
 
 exports.getMovieByActor = function(actorName, callback) {
+    console.log(actorName);
     var options = {
         "method": "GET",
         "hostname": "api.themoviedb.org",
@@ -90,21 +91,22 @@ exports.getMovieByActor = function(actorName, callback) {
         "path": "/3/search/person?include_adult=false&page=1&query=" + encodeURI(actorName) + "&language=en-US&api_key=65e3afbf8707bae113c071382a40d33c",
         "headers": {}
       };
-      
+
       var req = http.request(options, function (res) {
         var chunks = [];
-      
+
         res.on("data", function (chunk) {
           chunks.push(chunk);
         });
-      
+
         res.on("end", function () {
           var body = Buffer.concat(chunks);
-          var jsonBody = body.toString();
-          getMovie({"actor_id": jsonBody.results[0].id}, callback);
+          var jsonBody = JSON.parse(body.toString());
+
+          exports.getMovie({"actor_id": jsonBody.results[0].id}, callback);
         });
       });
-      
+
       req.write("{}");
       req.end();
 }
