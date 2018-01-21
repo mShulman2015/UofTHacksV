@@ -24,7 +24,7 @@ var genre = {
 }
 
 
-exports.getMovie = function(options,iterator,callback) {
+exports.getMovie = function(options,callback) {
     queryString = '?api_key=' + apiKey;
     if(options != null && 'genres' in options) {
         for(var i = 0; i < options['genres'].length; i++) {
@@ -74,7 +74,7 @@ exports.getMovie = function(options,iterator,callback) {
             var body = Buffer.concat(chunks);
             var jsonBody = JSON.parse(body.toString());
             console.log(jsonBody);
-            callback(jsonBody.results[iterator].title);
+            callback(jsonBody.results[getRandomInt(jsonBody.results.length)]);
         });
     });
 
@@ -82,9 +82,8 @@ exports.getMovie = function(options,iterator,callback) {
     req.end();
 }
 
-exports.getMovieByActor = function(actorName,iterator,callback) {
-    console.log(iterator);
-    console.log(actorName);
+exports.getMovieByActor = function(actorName,callback) {
+    console.log("actor_name: " + actorName);
     var options = {
         "method": "GET",
         "hostname": "api.themoviedb.org",
@@ -104,10 +103,14 @@ exports.getMovieByActor = function(actorName,iterator,callback) {
           var body = Buffer.concat(chunks);
           var jsonBody = JSON.parse(body.toString());
 
-          exports.getMovie({"actor_id": jsonBody.results[0].id},iterator ,callback);
+          exports.getMovie({"actor_id": jsonBody.results[0].id} ,callback);
         });
       });
 
       req.write("{}");
       req.end();
+}
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
 }
